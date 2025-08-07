@@ -4,7 +4,7 @@ plugins {
 }
 
 version = project.mod_version
-group = project.maven_group
+group   = project.maven_group
 base { archivesName = project.archives_base_name }
 
 repositories {
@@ -13,13 +13,15 @@ repositories {
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    minecraft     "com.mojang:minecraft:${project.minecraft_version}"
+    mappings      "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 }
 
-loom { splitEnvironmentSourceSets() }
+loom {
+    // لا تقسيم للـ source sets — تركناه فاضي
+}
 
 sourceCompatibility = JavaVersion.VERSION_21
 targetCompatibility = JavaVersion.VERSION_21
@@ -27,5 +29,5 @@ targetCompatibility = JavaVersion.VERSION_21
 java { withSourcesJar() }
 
 tasks.withType(JavaCompile).configureEach {
-    it.options.release = Integer.parseInt(project.java_version)
+    it.options.release = Integer.parseInt(project.java_version) // لازم تكون 21 في gradle.properties
 }
