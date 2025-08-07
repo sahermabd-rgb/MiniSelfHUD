@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "hudplayermini",
+  "version": "1.0.0",
+  "name": "HUD Player Mini",
+  "description": "Shows your live 3D player model at the bottom-right HUD (no frame, tiny).",
+  "authors": [
+    "Saher x ChatGPT"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.saher.hudplayermini.HUDPlayerMiniClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric": "*",
+    "minecraft": ">=1.21"
+  },
+  "icon": "assets/hudplayermini/icon.png"
+}
