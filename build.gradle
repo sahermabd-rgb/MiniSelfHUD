@@ -1,21 +1,11 @@
-pluginManagement {
-    repositories {
-        maven { name = "Fabric"; url = "https://maven.fabricmc.net/" }
-        gradlePluginPortal()
-        mavenCentral()
-    }
-}
-
 plugins {
-    id 'fabric-loom' version '1.6'    // نسخة ثابتة، بدون SNAPSHOT
+    id 'fabric-loom' version '1.6'   // نسخة ثابتة
     id 'maven-publish'
 }
 
 version = project.mod_version
 group = project.maven_group
-base {
-    archivesName = project.archives_base_name
-}
+base { archivesName = project.archives_base_name }
 
 repositories {
     mavenCentral()
@@ -29,16 +19,12 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 }
 
-loom {
-    splitEnvironmentSourceSets()
-}
+loom { splitEnvironmentSourceSets() }
 
 sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
-java {
-    withSourcesJar()
-}
+java { withSourcesJar() }
 
 tasks.withType(JavaCompile).configureEach {
     it.options.release = Integer.parseInt(project.java_version)
