@@ -16,14 +16,17 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      # نولّد Gradle Wrapper بنسخة 8.10 (أو أي >= 8.8)
-      - name: Generate Gradle Wrapper 8.10
+      - name: Set up Gradle 8.10
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.10
+          add-to-path: true
+
+      - name: Generate Wrapper & Build
         run: |
           gradle wrapper --gradle-version 8.10
           chmod +x ./gradlew
-
-      - name: Build with Gradle Wrapper
-        run: ./gradlew build --no-daemon
+          ./gradlew build --no-daemon
 
       - name: Upload mod jar
         uses: actions/upload-artifact@v4
